@@ -12,7 +12,8 @@ def webhook():
     if request.method == 'POST':
         res = request.json
         print(res)
-        global DATA_FROM_WEBHOOK = res
+        global DATA_FROM_WEBHOOK
+        DATA_FROM_WEBHOOK = res
         return res, 200
     else:
         abort(400)
