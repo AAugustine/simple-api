@@ -1,3 +1,3 @@
 # simple-api
-minor change
+test minor change
 A simple API for testing and demos, meant to be deployed on Google App Engine
