@@ -1,6 +1,7 @@
 from flask import Flask, request, abort
 
 app = Flask(__name__)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 DATA_FROM_WEBHOOK = 'Waiting for data...'
 
 @app.route('/')
