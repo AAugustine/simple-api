@@ -23,6 +23,10 @@ def webhook():
         return res, 200
     else:
         abort(400)
+@app.route('/clear')
+def clear():
+    global DATA_FROM_WEBHOOK
+    DATA_FROM_WEBHOOK = None
 
 
 if __name__ == '__main__':
