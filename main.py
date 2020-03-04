@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, jsonify
 import json
 
 app = Flask(__name__)
@@ -8,10 +8,10 @@ DATA_FROM_WEBHOOK = None
 @app.route('/')
 def index():
     if DATA_FROM_WEBHOOK:
-        formatted_res = json.dumps(res, sort_keys=True,indent=10, separators=(',', ': '))
+        return jsonify(DATA_FROM_WEBHOOK)
     else: 
         formatted_res = 'Waiting for data...'
-    return 'WEBHOOK DATA: %s' % formatted_res
+        return 'WEBHOOK DATA: %s' % formatted_res
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
