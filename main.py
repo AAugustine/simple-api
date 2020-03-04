@@ -1,4 +1,5 @@
-from flask import Flask, request, abort, jsonify
+from flask import Flask, request, abort
+import json
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
@@ -7,8 +8,10 @@ DATA_FROM_WEBHOOK = None
 @app.route('/')
 def index():
     if DATA_FROM_WEBHOOK:
-        formatted_res = jsonify(DATA_FROM_WEBHOOK)
-    else: formatted_res = 'Waiting for data...'
+        res = json.loads(DATA_FROM_WEBHOOK)
+        formatted_res = json.dumps(res, indent=2)
+    else: 
+        formatted_res = 'Waiting for data...'
     return 'WEBHOOK DATA: %s' % formatted_res
 
 @app.route('/webhook', methods=['POST'])
