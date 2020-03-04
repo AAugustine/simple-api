@@ -27,6 +27,7 @@ def webhook():
 def clear():
     global DATA_FROM_WEBHOOK
     DATA_FROM_WEBHOOK = None
+    return redirect('/')
 
 
 if __name__ == '__main__':
