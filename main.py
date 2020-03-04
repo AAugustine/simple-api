@@ -8,8 +8,7 @@ DATA_FROM_WEBHOOK = None
 @app.route('/')
 def index():
     if DATA_FROM_WEBHOOK:
-        res = json.loads(DATA_FROM_WEBHOOK)
-        formatted_res = json.dumps(res, indent=2)
+        formatted_res = json.dumps(res, indent=10)
     else: 
         formatted_res = 'Waiting for data...'
     return 'WEBHOOK DATA: %s' % formatted_res
