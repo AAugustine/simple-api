@@ -6,7 +6,8 @@ DATA_FROM_WEBHOOK = 'Waiting for data...'
 
 @app.route('/')
 def index():
-    return 'WEBHOOK DATA: %s' % DATA_FROM_WEBHOOK
+    formatted_res = flask.jsonify(DATA_FROM_WEBHOOK, indent=2)
+    return 'WEBHOOK DATA: %s' % formatted_res
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
