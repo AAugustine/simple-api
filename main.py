@@ -7,7 +7,7 @@ DATA_FROM_WEBHOOK = None
 @app.route('/')
 def index():
     if DATA_FROM_WEBHOOK:
-        formatted_res = jsonify(DATA_FROM_WEBHOOK, indent=2)
+        formatted_res = jsonify(DATA_FROM_WEBHOOK)
     else: formatted_res = 'Waiting for data...'
     return 'WEBHOOK DATA: %s' % formatted_res
 
